@@ -1,7 +1,7 @@
-import { GameObjects, Scene } from 'phaser';
+import { Scene } from 'phaser';
 
 export class LoadingScene extends Scene {
-  private king!: GameObjects.Sprite;
+
   constructor() {
     super('loading-scene');
   }
@@ -12,8 +12,8 @@ export class LoadingScene extends Scene {
     // path from baseURL to file: 'sprites/king.png'
     this.load.image('king', 'sprites/king.png');
   }
-
-	create(): void {
-		this.king = this.add.sprite(100, 100, 'king');
-	}
+  
+  create(): void {
+    this.scene.start('level-1-scene');
+  }
 }
