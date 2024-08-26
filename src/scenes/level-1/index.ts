@@ -24,7 +24,7 @@ export class Level1 extends Scene {
   update(): void {
     this.player.update();
     this.initChests();
-    // this.initCamera();
+    this.initCamera();
   }
 
   private initMap(): void {
@@ -63,5 +63,11 @@ export class Level1 extends Scene {
         this.cameras.main.flash();
       });
     });
+  }
+
+  private initCamera(): void {
+    this.cameras.main.setSize(this.game.scale.width, this.game.scale.height);
+    this.cameras.main.startFollow(this.player, true, 0.09, 0.09);
+    this.cameras.main.setZoom(2);
   }
 }
