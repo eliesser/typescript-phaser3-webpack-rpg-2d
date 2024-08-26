@@ -1,10 +1,12 @@
 import { Actor } from './actor';
+import { Text } from './text';
 
 export class Player extends Actor {
   private keyW: Phaser.Input.Keyboard.Key;
   private keyA: Phaser.Input.Keyboard.Key;
   private keyS: Phaser.Input.Keyboard.Key;
   private keyD: Phaser.Input.Keyboard.Key;
+  private hpValue: Text;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, 'king');
@@ -19,7 +21,11 @@ export class Player extends Actor {
     this.getBody().setSize(30, 30);
     this.getBody().setOffset(8, 0);
 
-		this.initAnimations();
+    this.initAnimations();
+
+    this.hpValue = new Text(this.scene, this.x, this.y - this.height, this.hp.toString())
+      .setFontSize(12)
+      .setOrigin(0.8, 0.5);
   }
 
   update(): void {
@@ -48,9 +54,12 @@ export class Player extends Actor {
       this.getBody().setOffset(15, 15);
       !this.anims.isPlaying && this.anims.play('run', true);
     }
+
+    this.hpValue.setPosition(this.x, this.y - this.height * 0.4);
+    this.hpValue.setOrigin(0.8, 0.5);
   }
 
-	private initAnimations(): void {
+  private initAnimations(): void {
     this.scene.anims.create({
       key: 'run',
       frames: this.scene.anims.generateFrameNames('a-king', {
@@ -67,5 +76,10 @@ export class Player extends Actor {
       }),
       frameRate: 8,
     });
-	}
+  }
+
+  public getDamage(value?: number): void {
+    super.getDamage(value);
+    this.hpValue.setText(this.hp.toString());
+  }
 }
