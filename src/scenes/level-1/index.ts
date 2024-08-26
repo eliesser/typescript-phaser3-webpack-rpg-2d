@@ -1,4 +1,4 @@
-import { GameObjects, Scene, Tilemaps } from 'phaser';
+import { Display, GameObjects, Scene, Tilemaps } from 'phaser';
 
 import { Player } from '../../classes/player';
 import { Enemy } from '../../classes/enemy';
@@ -49,7 +49,7 @@ export class Level1 extends Scene {
     const debugGraphics = this.add.graphics().setAlpha(0.7);
     this.wallsLayer.renderDebug(debugGraphics, {
       tileColor: null,
-      collidingTileColor: new Phaser.Display.Color(243, 234, 48, 255),
+      collidingTileColor: new Display.Color(243, 234, 48, 255),
     });
   }
 

@@ -52,7 +52,7 @@ export class Enemy extends Actor {
 
   preUpdate(): void {
     if (
-      Phaser.Math.Distance.BetweenPoints(
+      Math.Distance.BetweenPoints(
         { x: this.x, y: this.y },
         { x: this.target.x, y: this.target.y },
       ) < this.AGRESSOR_RADIUS

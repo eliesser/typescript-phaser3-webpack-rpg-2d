@@ -1,3 +1,5 @@
+import { Scene } from 'phaser';
+
 import { Text } from './text';
 
 export enum ScoreOperations {
@@ -9,7 +11,7 @@ export enum ScoreOperations {
 export class Score extends Text {
   private scoreValue: number;
 
-  constructor(scene: Phaser.Scene, x: number, y: number, initScore = 0) {
+  constructor(scene: Scene, x: number, y: number, initScore = 0) {
     super(scene, x, y, `Score: ${initScore}`);
     scene.add.existing(this);
     this.scoreValue = initScore;

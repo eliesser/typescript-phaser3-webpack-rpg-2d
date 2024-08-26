@@ -1,4 +1,4 @@
-import { Game, Types } from 'phaser';
+import { Game, Types, WEBGL, Scale } from 'phaser';
 
 import { Level1, LoadingScene, UIScene } from './scenes';
 
@@ -8,11 +8,11 @@ type GameConfigExtended = Types.Core.GameConfig & {
 
 export const gameConfig: GameConfigExtended = {
 	title: 'Phaser game tutorial',
-  type: Phaser.WEBGL,
+  type: WEBGL,
   parent: 'game',
   backgroundColor: '#351f1b',
   scale: {
-    mode: Phaser.Scale.ScaleModes.NONE,
+    mode: Scale.ScaleModes.NONE,
     width: window.innerWidth,
     height: window.innerHeight,
   },

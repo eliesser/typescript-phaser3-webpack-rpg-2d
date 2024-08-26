@@ -7,10 +7,10 @@ import { EVENTS_NAME, GameStatus } from '../consts';
 
 
 export class Player extends Actor {
-  private keyW: Phaser.Input.Keyboard.Key;
-  private keyA: Phaser.Input.Keyboard.Key;
-  private keyS: Phaser.Input.Keyboard.Key;
-  private keyD: Phaser.Input.Keyboard.Key;
+  private keyW: Input.Keyboard.Key;
+  private keyA: Input.Keyboard.Key;
+  private keyS: Input.Keyboard.Key;
+  private keyD: Input.Keyboard.Key;
   private keySpace: Input.Keyboard.Key;
   private hpValue: Text;
 
@@ -37,6 +37,10 @@ export class Player extends Actor {
       this.keySpace.on('down', (event: KeyboardEvent) => {
         this.anims.play('attack', true);
         this.scene.game.events.emit(EVENTS_NAME.attack);
+      });
+      
+      this.on('destroy', () => {
+        this.keySpace.removeAllListeners();
       });
   }
 
