@@ -1,4 +1,4 @@
-import { GameObjects, Scene } from 'phaser';
+import { Scene } from 'phaser';
 
 import { Player } from '../../classes/player';
 
